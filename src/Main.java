@@ -33,12 +33,10 @@ public class Main {
         array[0] = 0;
         array[1] = 1;
         for(int i = 2; i < array.length; i++){
-            array[i] = array[i - 2] + array[i - 1];
-        }
-        for(int i = 0; i < array.length; i++){
             if(i >= from){
                 sum += array[i];
             }
+            array[i] = array[i - 2] + array[i - 1];
         }
         return sum % 10;
     }
