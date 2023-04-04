@@ -1,3 +1,5 @@
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Scanner;
 
 public class Main {
@@ -26,19 +28,21 @@ public class Main {
      * @param to - Ending term
      * @return The remainder of the sum of fibonacci numbers in the range:  from-to divided by 10
      */
-    private static long getFibonacciPartialSumFast(long from, long to) {
-        long sum = 0;
+    private static BigInteger getFibonacciPartialSumFast(long from, long to) {
+        BigInteger sum = BigInteger.valueOf(0);
         // create 1D array
-        long[] array = new long[(int)to + 1];
-        array[0] = 0;
-        array[1] = 1;
+        BigInteger[] array = new BigInteger[(int)to + 1];
+        array[0] = BigInteger.valueOf(0);
+        array[1] = BigInteger.valueOf(1);
         for(int i = 2; i < array.length; i++){
-            if(i >= from){
-                sum += array[i];
-            }
-            array[i] = array[i - 2] + array[i - 1];
+            array[i] = array[i - 2].add(array[i - 1]);
         }
-        return sum % 10;
+        for(int i = 0; i < array.length; i++){
+            if(i >= from){
+                sum = sum.add(array[i]);
+            }
+        }
+        return sum.mod(BigInteger.valueOf(10));
     }
 
     public static void main(String[] args) {
