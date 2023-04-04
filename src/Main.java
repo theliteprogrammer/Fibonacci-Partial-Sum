@@ -33,7 +33,9 @@ public class Main {
         // create 1D array
         BigInteger[] array = new BigInteger[(int)to + 1];
         array[0] = BigInteger.valueOf(0);
-        array[1] = BigInteger.valueOf(1);
+        if(to >= 1){
+            array[1] = BigInteger.valueOf(1);
+        }
         for(int i = 2; i < array.length; i++){
             array[i] = array[i - 2].add(array[i - 1]);
         }
